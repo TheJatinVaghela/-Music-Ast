@@ -2,19 +2,19 @@ let form = document.querySelector("form").addEventListener("submit", (e)=>{e.pre
 
 
 
+
 let Submit_Search_value = document.getElementById("Hight2");
 Submit_Search_value.addEventListener("click", getSearch_Value);
 let Song_Name="";
 let Search_History;
 let Song_Name_History=[];
+let History_Arry;
+let Search_value = document.getElementById("Hight");
+Chack_L_S();
 
 function getSearch_Value() {
 
-    let Search_value = document.getElementById("Hight");
-    if () {
-        
-    }
-    Song_Name = Search_value.value;
+ ((Search_value.value==="" ) || (Search_value.value === null))? alert("EmtyValue") : Song_Name = Search_value.value;
     Search_History={ 
         Song_Name,
     }
@@ -26,18 +26,34 @@ function getSearch_Value() {
     Chack_L_S();
 };
 
+
 function Chack_L_S() {
+
   let History = localStorage.getItem("History");
-  let History_Arry;
-  if (History===null) {
-    History_Arry=[];
+  if (History == null) {
+    History_Arry= [];
   } else {
     History_Arry = JSON.parse(History);
   }
-  History_Arry.push(...Song_Name_History);
-  
+   console.log(History_Arry);
+   (Song_Name === '')?console.log("np") : History_Arry.push({Song_Name});
   localStorage.setItem("History", JSON.stringify(History_Arry));
-
   
 };
+// with History_Arry we wil creart the elements in Saves and give them the id of thire number in Arry like 0:,1: ;
+
+
+// index will be used to get the elemenmts ID from html when clicked on delete 
+// exm: onclick="Delete_History(this.id)"
+function Delete_History(index) {
+  let History = localStorage.getItem("History");
+  if (History == null) {
+    History_Arry= [];
+  } else {
+    History_Arry = JSON.parse(History);
+  }
+  History_Arry.splice(index, 1);
+  console.log(History_Arry);
+  // Chack_L_S();
+}
 
