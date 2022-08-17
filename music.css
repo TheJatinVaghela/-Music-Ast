@@ -1,0 +1,45 @@
+html{
+    font-size: 62.5% !important;
+ }
+ *,*::after,*::before{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: sans-serif;
+ }
+ :root{
+    --primaryColor-- : rgb(154, 189, 242);
+    --secendryColor-- : rgb(0, 252, 206);
+ }
+ body{
+    width: 100vw;
+    height: 100vh;
+  
+ }
+ 
+ #main{
+    display: grid;
+    position: relative;
+    width: 100vw;
+    height: 120vh;
+    background-color: var(--primaryColor--);
+    border-top: 2px solid green;
+ }
+ #navbar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    background-color: var(--primaryColor--);
+ }
+ #navbar-brand {
+    font-size:  clamp(.7rem, .5rem + 2.3333vw , 6rem);
+
+ }
+ .Same-Font{
+    font-size:  clamp(.6rem, .2rem + 2.3333vw , 6rem);
+   
+ }
+ #Hight{
+    height: clamp(3rem, 1rem + 3vw , 7rem) !important ;
+ }
