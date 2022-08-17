@@ -9,8 +9,10 @@ html{
     font-family: sans-serif;
  }
  :root{
-    --primaryColor-- : rgb(154, 189, 242);
+    --primaryColor-- : rgb(0 74 185);
     --secendryColor-- : rgb(0, 252, 206);
+    --btncolor-- : rgb(255, 255, 255);
+    
  }
  body{
     width: 100vw;
@@ -36,35 +38,54 @@ html{
  #Hight{
     height: clamp(3rem, 1rem + 3vw , 7rem) !important ;
  }
+ #Hight2{
+   width: clamp(3rem, 7rem + 3vw , 10rem) !important;
+    height: clamp(3rem, 1rem + 3vw , 7rem) !important ;
+    font-size: clamp(.6rem, .2rem + 2.3333vw , 2rem);
+ }
 
  #main{
    
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: auto;
     background-color: var(--primaryColor--);
     border-top: 2px solid green;
-    display: flex;
-    
+    display: grid;
+    grid-gap: 6rem;
+    /* grid-template-columns: repeat( auto-fit, minmax(0.2rem, 1fr) ); */
+    grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+   
 
  }
  .Card{
     
     
-    position: absolute;
+    position: relative;
     border: 2px solid green;
     display: flex;
     justify-content:center;
     align-items: flex-end;
-    
+    /* height: clamp(35rem, 40rem + 2.3333vw, 70rem);
+    width: clamp(35rem, 40rem + 2.3333vw, 70rem); */
  }
- .Card > .Card_img{
-    
+ .Card_img{
+    width: 100%;
+    height: 100%;
  }
- .Card > button{
-    position: absolute;
-   width: 15%;
-   height: 10%;
+ .Card > .button{
+
+   position: absolute;
+   width:  clamp(3rem, 7rem + 1.3333vw , 11rem);;
+   height: clamp(6rem, .7rem + 1.3333vh , 11rem);
    margin-left: -70%;
+   font-size:  clamp(2.7rem, .2rem + 1.3333vw , 4rem);
+   font-weight: bold;
+   display: grid;
+   place-items: center;
+   color:var(--primaryColor--);
+   background-color: var(--btncolor--);
+   border: 1px solid var(--secendryColor--);
+
  }
  .Card > .Card_play_btn{
         margin-left: 70%;
