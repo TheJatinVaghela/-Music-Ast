@@ -11,7 +11,7 @@ html{
  :root{
     --primaryColor-- : rgb(0 74 185);
     --secendryColor-- : rgb(0, 252, 206);
-    --btncolor-- : rgb(255, 255, 255);
+    --btncolor-- : #007bff;
     
  }
  body{
@@ -26,7 +26,9 @@ html{
     flex-wrap: wrap;
     justify-content: left;
     background-color: var(--primaryColor--);
+    gap:5rem;
  }
+  
  #navbar-brand {
     font-size:  clamp(.7rem, .5rem + 2.3333vw , 6rem);
 
@@ -34,6 +36,9 @@ html{
  .Same-Font{
     font-size:  clamp(.6rem, .2rem + 2.3333vw , 6rem);
    
+ }
+ .Same-Font:hover{
+   color: var(--btncolor--) !important;
  }
  #Hight{
     height: clamp(3rem, 1rem + 3vw , 7rem) !important ;
@@ -82,8 +87,8 @@ html{
    font-weight: bold;
    display: grid;
    place-items: center;
-   color:var(--primaryColor--);
-   background-color: var(--btncolor--);
+   color:var(--btncolor--);
+   background-color: var(--secendryColor--);
    border: 1px solid var(--secendryColor--);
 
  }
