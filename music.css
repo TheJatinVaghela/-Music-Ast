@@ -18,14 +18,7 @@ html{
   
  }
  
- #main{
-    display: grid;
-    position: relative;
-    width: 100vw;
-    height: 120vh;
-    background-color: var(--primaryColor--);
-    border-top: 2px solid green;
- }
+ 
  #navbar{
     display: flex;
     flex-wrap: wrap;
@@ -42,4 +35,37 @@ html{
  }
  #Hight{
     height: clamp(3rem, 1rem + 3vw , 7rem) !important ;
+ }
+
+ #main{
+   
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--primaryColor--);
+    border-top: 2px solid green;
+    display: flex;
+    
+
+ }
+ .Card{
+    
+    
+    position: absolute;
+    border: 2px solid green;
+    display: flex;
+    justify-content:center;
+    align-items: flex-end;
+    
+ }
+ .Card > .Card_img{
+    
+ }
+ .Card > button{
+    position: absolute;
+   width: 15%;
+   height: 10%;
+   margin-left: -70%;
+ }
+ .Card > .Card_play_btn{
+        margin-left: 70%;
  }
