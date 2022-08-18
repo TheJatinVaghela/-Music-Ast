@@ -34,7 +34,7 @@ html{
 
  }
  .Same-Font{
-    font-size:  clamp(.6rem, .2rem + 2.3333vw , 6rem);
+    font-size:  clamp(1rem, 1.2rem + 2.3333vw , 6rem);
    
  }
  .Same-Font:hover{
@@ -60,11 +60,11 @@ html{
     /* grid-template-columns: repeat( auto-fit, minmax(0.2rem, 1fr) ); */
     grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
    
-   display: none;
+   /* display: none; */
  }
  .Card{
     
-    
+   width: 90%;
     position: relative;
     border: 2px solid green;
     display: flex;
@@ -87,7 +87,7 @@ html{
    font-weight: bold;
    display: grid;
    place-items: center;
-   color:var(--btncolor--);
+   color:var(--btncolor--) !important;
    background-color: var(--secendryColor--);
    border: 1px solid var(--secendryColor--);
 
@@ -95,7 +95,25 @@ html{
  .Card > .Card_play_btn{
         margin-left: 70%;
  }
+.Card_Title{
 
+   position: absolute;
+   width: fit-content;
+   height: fit-content;
+   font-size:  clamp(2.7rem, .2rem + 1.3333vw , 4rem);
+   font-weight: bold;
+   display: flex;
+   align-items: center;
+   background-color: rgba(10, 1, 1, .5);
+   color: var(--btncolor--);
+   margin-left: 0%;
+   margin-block: 45%;
+   display: none;
+}
+.Card:hover > .Card_Title{
+   display: flex;
+
+}
  #Saves{
    width: 100%;
    height: auto;
@@ -105,6 +123,8 @@ html{
    flex-direction: column;
    flex-wrap: wrap;
    gap: 2rem;
+
+   display: none;
  }
  .H_Div{
    display: flex;

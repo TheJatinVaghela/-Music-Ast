@@ -12,8 +12,31 @@ let History_Arry;
 let Search_value = document.getElementById("Hight");
 let Saves = document.querySelector("#Saves");
 let URL_LINK=[];
-let Top_Songs="Top-Songs";
+let Top_Songs="fun";
+let main = document.querySelector("#main");
+
 Chack_L_S();
+Music_Api();
+
+setTimeout(() => {
+  (function All_Songs_Show_Home() {
+    let Child_Card="";
+      URL_LINK.forEach((elm, index)=>{
+       // console.log(elm["SONG_NAME"], elm["SONG_ALBUM_COVER"], elm["SONG_LINK"] , index);
+          Child_Card += `
+                        <article class="Card">
+                           <img class="Card_img" src="https://i.scdn.co/image/ab67616d0000b27357de8cb9bbbe22a9e71c8af7" href="${elm["SONG_LINK"]}" alt="">
+                             <a href="${elm["SONG_LINK"]}" class="Card_play_btn button">play</a>
+                             <div class="Card_Title">${elm["SONG_NAME"]}</div>
+                             <div class="Card_Save_btn button" id="${index}" onclick="Save_History(this.id)">Save</div>
+                        </article>
+                        `
+      })
+      main.innerHTML += Child_Card;
+  })();
+
+}, 6000);
+
 
 function getSearch_Value() {
 
@@ -27,7 +50,9 @@ function getSearch_Value() {
     // console.log(Song_Name_History);
     Chack_L_S();
     Music_Api();
+    
     console.log(URL_LINK);
+    
 };
 
 
@@ -44,7 +69,7 @@ function Chack_L_S() {
   //  console.log(History_Arry);
    (Song_Name === '')?console.log("np") : History_Arry.push(Search_History);
   localStorage.setItem("History", JSON.stringify(History_Arry));
-  
+ 
 };
 
 
@@ -67,7 +92,7 @@ const Music = {
 fetch(`https://spotify23.p.rapidapi.com/search/?q=${Container_Song_Name}&type=multi&offset=0&limit=50&numberOfTopResults=5`, Music)
   .then(response => response.json())
   .then(response => {
-            console.log(response);
+           // console.log(response);
                 // console.log(response.tracks);
                 for (let key in response.tracks) {
                   let TRACKS= response.tracks[key] ;
@@ -76,12 +101,12 @@ fetch(`https://spotify23.p.rapidapi.com/search/?q=${Container_Song_Name}&type=mu
 
                    let TRACKS2 = TRACKS[key2]; 
                        for (let key3 in TRACKS2) {
-                        console.log(TRACKS2[key3]);
+                        //console.log(TRACKS2[key3]);
                            let artist_Arry=(TRACKS2[key3].artists["items"]);
                            let album_Arry=(TRACKS2[key3].albumOfTrack["name"]);
                            let song_Duration_Milliseconds=(TRACKS2[key3].duration["totalMilliseconds"]);
                            let song_Duration_Minutes = Number((song_Duration_Milliseconds / 60000).toFixed(2));
-                           let song_album_cover = (TRACKS2[key3].albumOfTrack["coverArt"].sources);
+                           let song_album_cover = (TRACKS2[key3].albumOfTrack["coverArt"].sources[1]);
                            
                           
                              let SONGS={ 
@@ -112,6 +137,7 @@ fetch(`https://spotify23.p.rapidapi.com/search/?q=${Container_Song_Name}&type=mu
   .catch(err => console.error(err));  // Last Line OF Music
 
   };
+
 
 
 // with History_Arry we wil creart the elements in Saves and give them the id of thire number in Arry like 0:,1: ;
