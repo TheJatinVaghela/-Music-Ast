@@ -14,15 +14,15 @@ Chack_L_S();
 
 function getSearch_Value() {
 
- ((Search_value.value==="" ) || (Search_value.value === null))? alert("EmtyValue") : Song_Name = Search_value.value;
+ ((Search_value.value==="" ) && (Search_value.value === null))? console.error("EmtyValue") : Song_Name = Search_value.value;
     Search_History={ 
         Song_Name,
     }
     Song_Name_History.push(Search_History)
     Search_value.value = null;
     
-    console.log(Song_Name);
-    console.log(Song_Name_History);
+   // console.log(Song_Name);
+   // console.log(Song_Name_History);
     Chack_L_S();
 };
 
@@ -36,7 +36,9 @@ function Chack_L_S() {
     History_Arry = JSON.parse(History);
   }
    console.log(History_Arry);
-   (Song_Name === '')?console.log("np") : History_Arry.push({Song_Name});
+  //  Delete_History()
+  //  console.log(History_Arry);
+   (Song_Name === '')?console.log("np") : History_Arry.push(Search_History);
   localStorage.setItem("History", JSON.stringify(History_Arry));
   
 };
@@ -46,14 +48,11 @@ function Chack_L_S() {
 // index will be used to get the elemenmts ID from html when clicked on delete 
 // exm: onclick="Delete_History(this.id)"
 function Delete_History(index) {
-  let History = localStorage.getItem("History");
-  if (History == null) {
-    History_Arry= [];
-  } else {
-    History_Arry = JSON.parse(History);
-  }
+  
   History_Arry.splice(index, 1);
-  console.log(History_Arry);
-  // Chack_L_S();
+ console.log(History_Arry) ;
+ localStorage.setItem("History", JSON.stringify(History_Arry));
+
+ return History_Arry;
 }
 
