@@ -60,7 +60,7 @@ function getSearch_Value() {
     
     Music_Api(Song_Name)
     console.log(URL_LINK);
-    URL_LINK.splice(0, 50)
+    URL_LINK.splice(0, 51)
     setTimeout(() => {
       console.log("HOME_CARD");
       
@@ -187,3 +187,21 @@ function Delete_History(index) {
  return History_Arry;
 }
 
+// SHow HOME SHow SAVES
+
+let  HOME = document.querySelector("#HOME");
+let  SAVE = document.querySelector("#SAVE");
+//let main2 = document.getElementById("main");
+//let Saves2 = document.getElementById("Saves");
+
+HOME.onclick = ()=>{
+    main.style.display="grid";
+
+    Saves.style.display="none"; //flex
+}
+SAVE.onclick = ()=>{
+    
+    main.style.display="none"; //grid
+    Saves.style.display="flex"; //flex
+    
+}

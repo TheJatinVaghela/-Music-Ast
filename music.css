@@ -10,9 +10,12 @@ html{
  }
  :root{
     --primaryColor-- : rgb(0 74 185);
-    --secendryColor-- : rgb(0, 252, 206);
-    --btncolor-- : #007bff;
-    
+    --secendryColorHOVER-- : rgb(38 255 0);
+    --secendryColor-- : green;
+    --btncolor-- : #53a6ff ;
+    --btncolorHOVER-- : #a4ebff ;
+    --btnBackGroungColor :  rgb(0 51 255); 
+    --HDIVBACKCOLOR-- :#0053ff;
  }
  body{
     width: 100vw;
@@ -35,10 +38,18 @@ html{
  }
  .Same-Font{
     font-size:  clamp(1rem, 1.2rem + 2.3333vw , 6rem);
-   
+    
+ }
+ .nav-link{
+   background-color: var(--btnBackGroungColor) !important;
+   outline: 2px solid var(--secendryColor--);
  }
  .Same-Font:hover{
    color: var(--btncolor--) !important;
+   
+ }
+ #HOME:hover, #SAVE:hover{
+       outline: 5px solid var(--secendryColorHOVER--);
  }
  #Hight{
     height: clamp(3rem, 1rem + 3vw , 7rem) !important ;
@@ -54,7 +65,7 @@ html{
     width: 100%;
     height: auto;
     background-color: var(--primaryColor--);
-    border-top: 2px solid green;
+    border-top: 2px solid var(--secendryColor--);
     display: grid;
     grid-gap: 2rem;
     /* grid-template-columns: repeat( auto-fit, minmax(0.2rem, 1fr) ); */
@@ -67,7 +78,7 @@ html{
     
    width:clamp(70% , 50% + 47vw , 100%);
     position: relative;
-    border: 2px solid green;
+    border: 2px solid var(--secendryColor--);
     display: flex;
     justify-content:center;
     align-items: flex-end;
@@ -89,12 +100,16 @@ html{
    display: grid;
    place-items: center;
    color:var(--btncolor--) !important;
-   background-color: var(--secendryColor--);
+   background-color:var(--btnBackGroungColor);
    border: 1px solid var(--secendryColor--);
 
  }
  .Card > .Card_play_btn{
         margin-left: 70%;
+ }
+  .Card > .Card_play_btn:hover,  .Card > .Card_Save_btn:hover{
+   outline: 2px solid var(--secendryColorHOVER--);
+   color: var(--btncolorHOVER--) !important;
  }
 .Card_Title{
 
@@ -119,7 +134,7 @@ html{
    width: 100%;
    height: auto;
    background-color: var(--primaryColor--);
-   border-top: 2px solid green;
+   border-top: 2px solid var(--secendryColor--);
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
@@ -131,7 +146,7 @@ html{
    display: flex;
    justify-content: space-between;
    align-items: center;
-   background-color: var(--secendryColor--);
+   background-color: var(--HDIVBACKCOLOR--);
    padding-inline: 15rem;
  }
  .H_Value{
@@ -143,12 +158,15 @@ html{
  .Delete_Btn{
    font-size: clamp(.9rem, .4rem + 2.3333vw , 4rem);
    font-weight: bolder;
-   border-color: green;
+   border-color: var(--secendryColor--);
    width: clamp(3rem, 7rem + 3vw , 10rem) ;
     height: clamp(3rem, 1rem + 3vw , 7rem) ;
-   background-color: green;
+   background-color: var(--btnBackGroungColor);
+   display: grid;
+    place-items: center;
  }
  .Delete_Btn:hover, .Delete_Btn:active{
-   background-color: green;
-   border: none;
+   background-color: var(--btnBackGroungColor);
+  outline: 2px solid var(--secendryColorHOVER--);
+  color: var(--btncolorHOVER--);
  }
