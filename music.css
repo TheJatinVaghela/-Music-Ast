@@ -56,15 +56,16 @@ html{
     background-color: var(--primaryColor--);
     border-top: 2px solid green;
     display: grid;
-    grid-gap: 6rem;
+    grid-gap: 2rem;
     /* grid-template-columns: repeat( auto-fit, minmax(0.2rem, 1fr) ); */
     grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
    
-   /* display: none; */
+   overflow-x: hidden;
+    /* display: none;  */
  }
  .Card{
     
-   width: 90%;
+   width:clamp(70% , 50% + 47vw , 100%);
     position: relative;
     border: 2px solid green;
     display: flex;

@@ -14,29 +14,37 @@ let Saves = document.querySelector("#Saves");
 let URL_LINK=[];
 let Top_Songs="fun";
 let main = document.querySelector("#main");
+let Container_Song_Name;
 
 Chack_L_S();
 Music_Api();
+function Home_Cards() {
+  
+    
+    setTimeout(() => {
+      (function All_Songs_Show_Home() {
+        let Child_Card="";
+          URL_LINK.forEach((elm, index)=>{
+           // console.log(elm["SONG_NAME"], elm["SONG_ALBUM_COVER"], elm["SONG_LINK"] , index);
+              Child_Card += `
+                            <article class="Card">
+                               <img class="Card_img" src="https://i.scdn.co/image/ab67616d0000b27357de8cb9bbbe22a9e71c8af7" href="${elm["SONG_LINK"]}" alt="">
+                                 <a href="${elm["SONG_LINK"]}" class="Card_play_btn button">play</a>
+                                 <div class="Card_Title">${elm["SONG_NAME"]}</div>
+                                 <div class="Card_Save_btn button" id="${index}" onclick="Save_History(this.id)">Save</div>
+                            </article>
+                            `
+          })
+          main.innerHTML += Child_Card;
+      })();
+    
+    }, 6000);
+      
+  
 
-setTimeout(() => {
-  (function All_Songs_Show_Home() {
-    let Child_Card="";
-      URL_LINK.forEach((elm, index)=>{
-       // console.log(elm["SONG_NAME"], elm["SONG_ALBUM_COVER"], elm["SONG_LINK"] , index);
-          Child_Card += `
-                        <article class="Card">
-                           <img class="Card_img" src="https://i.scdn.co/image/ab67616d0000b27357de8cb9bbbe22a9e71c8af7" href="${elm["SONG_LINK"]}" alt="">
-                             <a href="${elm["SONG_LINK"]}" class="Card_play_btn button">play</a>
-                             <div class="Card_Title">${elm["SONG_NAME"]}</div>
-                             <div class="Card_Save_btn button" id="${index}" onclick="Save_History(this.id)">Save</div>
-                        </article>
-                        `
-      })
-      main.innerHTML += Child_Card;
-  })();
 
-}, 6000);
-
+};
+Home_Cards();
 
 function getSearch_Value() {
 
@@ -49,10 +57,16 @@ function getSearch_Value() {
     console.log(Song_Name);
     // console.log(Song_Name_History);
     Chack_L_S();
-    Music_Api();
     
+    Music_Api(Song_Name)
     console.log(URL_LINK);
-    
+    URL_LINK.splice(0, 49)
+    setTimeout(() => {
+      console.log("HOME_CARD");
+      
+      main.innerHTML=null;
+      Home_Cards();
+    }, 7000);
 };
 
 
@@ -76,12 +90,11 @@ function Chack_L_S() {
 
 
 //=====================// Music    //tracks
-function Music_Api() {
+function Music_Api(Value) {
   
-let Container_Song_Name;
-(Song_Name==='')? Container_Song_Name=Top_Songs : Container_Song_Name=Song_Name;
-//console.log(Container_Song_Name);
+  
 
+console.log(Value);
 const Music = {
   method: 'GET',
   headers: {
@@ -89,7 +102,7 @@ const Music = {
     'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
   }
 };
-fetch(`https://spotify23.p.rapidapi.com/search/?q=${Container_Song_Name}&type=multi&offset=0&limit=50&numberOfTopResults=5`, Music)
+fetch(`https://spotify23.p.rapidapi.com/search/?q=${Value}&type=multi&offset=0&limit=50&numberOfTopResults=5`, Music)
   .then(response => response.json())
   .then(response => {
            // console.log(response);
@@ -119,8 +132,10 @@ fetch(`https://spotify23.p.rapidapi.com/search/?q=${Container_Song_Name}&type=mu
                                       SONG_ALBUM_NAME: TRACKS2[key3].albumOfTrack["name"],
                                       SONG_ALBUM_COVER: song_album_cover,
                                     }
+                                  
                                     URL_LINK.push(SONGS); 
-                        
+                                    
+                              
                           
                        }
 
@@ -138,7 +153,19 @@ fetch(`https://spotify23.p.rapidapi.com/search/?q=${Container_Song_Name}&type=mu
 
   };
 
+function Save_History(index) {
+    let index_Elm = document.getElementById(`${index}`);
+     let index_Perent = index_Elm.parentElement;
+    
+    let index_Title = index_Elm.parentElement.childNodes[5];
+    let index_Title_innerHTML= index_Title.innerHTML;
 
+   
+   
+    
+    console.log(index_Perent);
+    console.log(index_Title_innerHTML);
+}
 
 // with History_Arry we wil creart the elements in Saves and give them the id of thire number in Arry like 0:,1: ;
 
