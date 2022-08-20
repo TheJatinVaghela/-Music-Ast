@@ -200,6 +200,10 @@ function Creat_Saves() {
   
     Saves.innerHTML+=INSIDE_Saves;
   }
+  else{
+    Saves.innerHTML=null;
+
+  }
 
 }
 // with History_Arry we wil creart the elements in Saves and give them the id of thire number in Arry like 0:,1: ;
@@ -209,10 +213,23 @@ function Creat_Saves() {
 // exm: onclick="Delete_History(this.id)"
 function Delete_History(index) {
   
-History_Arry.splice(index, 1);
+ /* let index_ELm = document.getElementById(`${index}`);
+  //console.log(index_ELm);
+  let index_perent = index_ELm.parentNode;
+  index_perent.style.display="none";
+  //console.log(index_perent);
+  // index_ELm.parentNode.style.display="none"; */
+
+  History_Arry.splice(index, 1);
  console.log(History_Arry) ;
  localStorage.setItem("History", JSON.stringify(History_Arry));
 
+  
+   NEW_history_Arry= JSON.parse(localStorage.getItem("History"));
+   //window.location.reload(true);
+
+   Saves.innerHTML=null;
+   Creat_Saves()
  return History_Arry;
 }
 
