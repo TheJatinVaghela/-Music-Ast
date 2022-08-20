@@ -16,11 +16,12 @@ html{
     --btncolorHOVER-- : #a4ebff ;
     --btnBackGroungColor :  rgb(0 51 255); 
     --HDIVBACKCOLOR-- :#0053ff;
+    --bodyBackColor-- : #eeeeee;
  }
  body{
     width: 100vw;
     height: 100vh;
-  
+  background-color: var(--bodyBackColor--);
  }
  
  
@@ -120,7 +121,7 @@ html{
    font-weight: bold;
    display: flex;
    align-items: center;
-   background-color: rgba(10, 1, 1, .5);
+   background-color: rgba(10, 1, 1, .7);
    color: var(--btncolor--);
    margin-left: 0%;
    margin-block: 45%;
@@ -179,7 +180,7 @@ html{
    position: absolute;
    width: 100vw;
    height: 100vh;
-   background: #000 url(https://i.gifer.com/1amw.gif) no-repeat center;
+   background: var(--bodyBackColor--) url(https://i.gifer.com/1amw.gif) no-repeat center;
    background-size: 20%;
    position: fixed;
    z-index: 100;

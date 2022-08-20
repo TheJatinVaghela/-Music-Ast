@@ -31,7 +31,7 @@ function Home_Cards() {
            // console.log(elm["SONG_NAME"], elm["SONG_ALBUM_COVER"], elm["SONG_LINK"] , index);
               Child_Card += `
                             <article class="Card">
-                               <img class="Card_img" src="https://i.scdn.co/image/ab67616d0000b27357de8cb9bbbe22a9e71c8af7" href="${elm["SONG_LINK"]}" alt="">
+                               <img class="Card_img" src="${elm["SONG_ALBUM_COVER"]}" href="${elm["SONG_LINK"]}" alt="">
                                  <a href="${elm["SONG_LINK"]}" class="Card_play_btn button">play</a>
                                  <div class="Card_Title">${elm["SONG_NAME"]}</div>
                                  <div class="Card_Save_btn button" id="${index}" onclick="Save_History(this.id)">Save</div>
@@ -137,7 +137,8 @@ fetch(`https://spotify81.p.rapidapi.com/search?q=${Value}&type=multi&offset=0&li
                            let album_Arry=(TRACKS2.albumOfTrack["name"]);
                            let song_Duration_Milliseconds=(TRACKS2.duration["totalMilliseconds"]);
                            let song_Duration_Minutes = Number((song_Duration_Milliseconds / 60000).toFixed(2));
-                           let song_album_cover = (TRACKS2.albumOfTrack["coverArt"].sources[1]);
+                           let song_album_cover = (TRACKS2.albumOfTrack["coverArt"].sources[2].url);
+                          //  console.log(song_album_cover);
                            
                           
                              let SONGS={ 
@@ -274,5 +275,5 @@ function Loeading() {
       
       
       LOEADER.style.display="none";
-    }, 8000);
+    }, 10000);
 }
