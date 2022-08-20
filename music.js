@@ -57,15 +57,15 @@ function getSearch_Value() {
     }
     Song_Name_History.push(Search_History)
     Search_value.value = null;
-    console.log(Song_Name);
+    //console.log(Song_Name);
     // console.log(Song_Name_History);
     Chack_L_S();
     
     Music_Api(Song_Name)
-    console.log(URL_LINK);
+    //console.log(URL_LINK);
     URL_LINK.splice(0, 51)
     setTimeout(() => {
-      console.log("HOME_CARD");
+      //console.log("HOME_CARD");
       
       main.innerHTML=null;
       Loeading();
@@ -82,10 +82,10 @@ function Chack_L_S() {
   } else {
     History_Arry = JSON.parse(History);
   }
-   console.log(History_Arry);
+   //console.log(History_Arry);
   //  Delete_History()
   //  console.log(History_Arry);
-   (Song_Name === '')?console.log("np") : History_Arry;
+   (Song_Name === '')?console.warn("np") : History_Arry;
   localStorage.setItem("History", JSON.stringify(History_Arry));
  
 };
@@ -102,7 +102,7 @@ function Music_Api(Value) {
     Value=Value;
   }
 
-console.log(Value);
+// console.log(Value);
 
 
   
@@ -129,9 +129,9 @@ fetch(`https://spotify81.p.rapidapi.com/search?q=${Value}&type=multi&offset=0&li
                   for (let key2 in TRACKS) {
 
                    let TRACKS2 = TRACKS[key2]; 
-                    console.log(TRACKS2);
+                    //console.log(TRACKS2);
                      // for (let key3 in TRACKS2) {
-                        console.log(TRACKS2);
+                        //console.log(TRACKS2);
                         Loeading();
                            let artist_Arry=(TRACKS2.artists["items"]);
                            let album_Arry=(TRACKS2.albumOfTrack["name"]);
@@ -177,18 +177,19 @@ function Save_History(index) {
      let index_Perent = index_Elm.parentElement;
     
     let index_Title = index_Elm.parentElement.childNodes[5];
+    let index_link = index_Elm.parentElement.childNodes[4].previousSibling.getAttribute("href");
     let index_Title_innerHTML= index_Title.innerHTML;
-
+  console.log(index_link);
    
    
     
-    console.log(index_Perent);
-    console.log(index_Title_innerHTML);
+   //console.log(index_Perent);
+   //console.log(index_Title_innerHTML);
 
     
   
 
-    History_Arry.push(index_Title_innerHTML);
+    History_Arry.push({index_Title_innerHTML, index_link});
   localStorage.setItem("History", JSON.stringify(History_Arry));
  
   Saves.innerHTML=null;
@@ -200,13 +201,13 @@ function Creat_Saves() {
   
   NEW_history_Arry= JSON.parse(localStorage.getItem("History"));
 
-  console.log(NEW_history_Arry);
+  //console.log(NEW_history_Arry);
   if (NEW_history_Arry !== null) {
     
     let INSIDE_Saves="";
     NEW_history_Arry.forEach((element, index)=> {
       INSIDE_Saves+=`
-    <div class="H_Div"> <h5 class="H_Value">${element}</h5> <div class="Delete_Btn" id="${index}" onclick="Delete_History(this.id)">X</div></div>
+    <div class="H_Div"> <a href="${element["index_link"]}" class="H_Value">${element["index_Title_innerHTML"]}</a> <div class="Delete_Btn" id="${index}" onclick="Delete_History(this.id)">X</div></div>
     `;
     });
   
@@ -224,24 +225,18 @@ function Creat_Saves() {
 // index will be used to get the elemenmts ID from html when clicked on delete 
 // exm: onclick="Delete_History(this.id)"
 function Delete_History(index) {
-  
- /* let index_ELm = document.getElementById(`${index}`);
-  //console.log(index_ELm);
-  let index_perent = index_ELm.parentNode;
-  index_perent.style.display="none";
-  //console.log(index_perent);
-  // index_ELm.parentNode.style.display="none"; */
 
   History_Arry.splice(index, 1);
- console.log(History_Arry) ;
- localStorage.setItem("History", JSON.stringify(History_Arry));
+  //console.log(History_Arry) ;
+  localStorage.setItem("History", JSON.stringify(History_Arry));
 
   
-   NEW_history_Arry= JSON.parse(localStorage.getItem("History"));
-   //window.location.reload(true);
+  NEW_history_Arry= JSON.parse(localStorage.getItem("History"));
+  //window.location.reload(true);
 
-   Saves.innerHTML=null;
-   Creat_Saves()
+  Saves.innerHTML=null;
+  Creat_Saves()
+
  return History_Arry;
 }
 
@@ -249,21 +244,22 @@ function Delete_History(index) {
 
 let  HOME = document.querySelector("#HOME");
 let  SAVE = document.querySelector("#SAVE");
-//let main2 = document.getElementById("main");
-//let Saves2 = document.getElementById("Saves");
 
-HOME.onclick = ()=>{
+
+HOME.addEventListener("click", ()=>{
+  
     main.style.display="grid";
-
     Saves.style.display="none"; //flex
-}
-SAVE.onclick = ()=>{
+    
+});
+SAVE.addEventListener("click", ()=>{
     
     main.style.display="none"; //grid
     Saves.style.display="flex"; //flex
     
-}
-
+    
+} );
+  
 function Loeading() {
   
   let LOEADER = document.getElementById("LOEADER");

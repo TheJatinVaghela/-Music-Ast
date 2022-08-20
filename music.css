@@ -69,22 +69,19 @@ html{
     border-top: 2px solid var(--secendryColor--);
     display: grid;
     grid-gap: 2rem;
-    /* grid-template-columns: repeat( auto-fit, minmax(0.2rem, 1fr) ); */
     grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
-   
-   overflow-x: hidden;
-    /* display: none;  */
+    overflow-x: hidden;
+    
  }
  .Card{
     
-   width:clamp(70% , 50% + 47vw , 100%);
+    width:clamp(70% , 50% + 47vw , 100%);
     position: relative;
     border: 2px solid var(--secendryColor--);
     display: flex;
     justify-content:center;
     align-items: flex-end;
-    /* height: clamp(35rem, 40rem + 2.3333vw, 70rem);
-    width: clamp(35rem, 40rem + 2.3333vw, 70rem); */
+   
  }
  .Card_img{
     width: 100%;
@@ -103,7 +100,7 @@ html{
    color:var(--btncolor--) !important;
    background-color:var(--btnBackGroungColor);
    border: 1px solid var(--secendryColor--);
-
+   cursor: pointer;
  }
  .Card > .Card_play_btn{
         margin-left: 70%;
@@ -140,7 +137,6 @@ html{
    flex-direction: column;
    flex-wrap: wrap;
    gap: 2rem;
-
    display: none;
  }
  .H_Div{
@@ -154,6 +150,12 @@ html{
    display: inline-block;
    font-size: clamp(.9rem, .4rem + 2.3333vw , 4rem);
    font-weight: bold;
+   color: var(--btncolor--);
+ }
+ .H_Value:hover{
+   color: var(--btncolorHOVER--) !important;
+   text-decoration:none !important;
+   outline: 2px solid var(--secendryColorHOVER--);
 
  }
  .Delete_Btn{
@@ -161,15 +163,15 @@ html{
    font-weight: bolder;
    border-color: var(--secendryColor--);
    width: clamp(3rem, 7rem + 3vw , 10rem) ;
-    height: clamp(3rem, 1rem + 3vw , 7rem) ;
+   height: clamp(3rem, 1rem + 3vw , 7rem) ;
    background-color: var(--btnBackGroungColor);
    display: grid;
-    place-items: center;
+   place-items: center;
  }
  .Delete_Btn:hover, .Delete_Btn:active{
    background-color: var(--btnBackGroungColor);
-  outline: 2px solid var(--secendryColorHOVER--);
-  color: var(--btncolorHOVER--);
+   outline: 2px solid var(--secendryColorHOVER--);
+   color: var(--btncolorHOVER--);
  }
 
 
