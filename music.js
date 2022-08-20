@@ -219,11 +219,7 @@ function Creat_Saves() {
   }
 
 }
-// with History_Arry we wil creart the elements in Saves and give them the id of thire number in Arry like 0:,1: ;
 
-
-// index will be used to get the elemenmts ID from html when clicked on delete 
-// exm: onclick="Delete_History(this.id)"
 function Delete_History(index) {
 
   History_Arry.splice(index, 1);
