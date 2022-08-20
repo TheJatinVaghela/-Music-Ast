@@ -15,7 +15,8 @@ let URL_LINK=[];
 let Top_Songs="fun";
 let main = document.querySelector("#main");
 let Container_Song_Name;
-
+let NEW_history_Arry = [];
+Creat_Saves();
 Chack_L_S();
 Music_Api();
 function Home_Cards() {
@@ -171,8 +172,36 @@ function Save_History(index) {
     
     console.log(index_Perent);
     console.log(index_Title_innerHTML);
+
+    
+  
+
+    History_Arry.push(index_Title_innerHTML);
+  localStorage.setItem("History", JSON.stringify(History_Arry));
+ 
+  Saves.innerHTML=null;
+  
+  Creat_Saves()
 }
 
+function Creat_Saves() {
+  
+  NEW_history_Arry= JSON.parse(localStorage.getItem("History"));
+
+  console.log(NEW_history_Arry);
+  if (NEW_history_Arry !== null) {
+    
+    let INSIDE_Saves="";
+    NEW_history_Arry.forEach((element, index)=> {
+      INSIDE_Saves+=`
+    <div class="H_Div"> <h5 class="H_Value">${element}</h5> <div class="Delete_Btn" id="${index}" onclick="Delete_History(this.id)">X</div></div>
+    `;
+    });
+  
+    Saves.innerHTML+=INSIDE_Saves;
+  }
+
+}
 // with History_Arry we wil creart the elements in Saves and give them the id of thire number in Arry like 0:,1: ;
 
 
@@ -180,7 +209,7 @@ function Save_History(index) {
 // exm: onclick="Delete_History(this.id)"
 function Delete_History(index) {
   
-  History_Arry.splice(index, 1);
+History_Arry.splice(index, 1);
  console.log(History_Arry) ;
  localStorage.setItem("History", JSON.stringify(History_Arry));
 
