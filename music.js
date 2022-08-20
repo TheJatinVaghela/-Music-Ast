@@ -1,3 +1,5 @@
+Loeading();
+
 let form = document.querySelector("form").addEventListener("submit", (e)=>{e.preventDefault();})
 
 
@@ -21,7 +23,7 @@ Chack_L_S();
 Music_Api();
 function Home_Cards() {
   
-    
+
     setTimeout(() => {
       (function All_Songs_Show_Home() {
         let Child_Card="";
@@ -66,6 +68,7 @@ function getSearch_Value() {
       console.log("HOME_CARD");
       
       main.innerHTML=null;
+      Loeading();
       Home_Cards();
     }, 7000);
 };
@@ -82,7 +85,7 @@ function Chack_L_S() {
    console.log(History_Arry);
   //  Delete_History()
   //  console.log(History_Arry);
-   (Song_Name === '')?console.log("np") : History_Arry.push(Search_History);
+   (Song_Name === '')?console.log("np") : History_Arry;
   localStorage.setItem("History", JSON.stringify(History_Arry));
  
 };
@@ -100,6 +103,13 @@ function Music_Api(Value) {
   }
 
 console.log(Value);
+
+
+  
+
+
+  
+
 const Music = {
   method: 'GET',
   headers: {
@@ -122,6 +132,7 @@ fetch(`https://spotify81.p.rapidapi.com/search?q=${Value}&type=multi&offset=0&li
                     console.log(TRACKS2);
                      // for (let key3 in TRACKS2) {
                         console.log(TRACKS2);
+                        Loeading();
                            let artist_Arry=(TRACKS2.artists["items"]);
                            let album_Arry=(TRACKS2.albumOfTrack["name"]);
                            let song_Duration_Milliseconds=(TRACKS2.duration["totalMilliseconds"]);
@@ -250,4 +261,18 @@ SAVE.onclick = ()=>{
     main.style.display="none"; //grid
     Saves.style.display="flex"; //flex
     
+}
+
+function Loeading() {
+  
+  let LOEADER = document.getElementById("LOEADER");
+
+   LOEADER.style.display="initial";
+  
+  setTimeout(() => {
+    
+      
+      
+      LOEADER.style.display="none";
+    }, 8000);
 }
