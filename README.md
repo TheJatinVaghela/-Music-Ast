@@ -1,4 +1,9 @@
 # Music-Ast
+<h1>Tools I Used</h1>
+<h3>Java SCript</h3>
+<h3>HTML</h3>
+<h3>CSS</h3>
+<h3>BootStrap  For Nav</h3>
 An app where you can find your song and search them Play Them Save Them 
 <h1><b>Get IT</b></h1>
 <p><i>Recommended Songs On Home Page<i></p>
