@@ -1,0 +1,211 @@
+html{
+    font-size: 62.5% !important;
+ }
+ *,*::after,*::before{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: sans-serif;
+ }
+ :root{
+    --primaryColor-- : rgb(0 74 185);
+    --secendryColorHOVER-- : rgb(38 255 0);
+    --secendryColor-- : green;
+    --btncolor-- : #53a6ff ;
+    --btncolorHOVER-- : #a4ebff ;
+    --btnBackGroungColor :  rgb(0 51 255); 
+    --HDIVBACKCOLOR-- :#0053ff;
+    --bodyBackColor-- : #eeeeee;
+ }
+ body{
+    width: 100%;
+    height: 100vh;
+  background-color: var(--primaryColor--);
+ }
+ 
+ 
+ #navbar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    background-color: var(--primaryColor--);
+    gap:5rem;
+ }
+  
+ #navbar-brand {
+    font-size:  clamp(.7rem, .5rem + 2.3333vw , 6rem);
+
+ }
+ .Same-Font{
+    font-size:  clamp(1rem, 1.2rem + 2.3333vw , 6rem);
+    
+ }
+ .nav-link{
+   background-color: var(--btnBackGroungColor) !important;
+   outline: 2px solid var(--secendryColor--);
+ }
+ .Same-Font:hover{
+   color: var(--btncolor--) !important;
+   
+ }
+ #HOME:hover, #SAVE:hover{
+       outline: 5px solid var(--secendryColorHOVER--);
+ }
+ #Hight{
+    height: clamp(3rem, 1rem + 3vw , 7rem) !important ;
+ }
+ #Hight2{
+   width: clamp(3rem, 7rem + 3vw , 10rem) !important;
+    height: clamp(3rem, 1rem + 3vw , 7rem) !important ;
+    font-size: clamp(.6rem, .2rem + 2.3333vw , 2rem);
+ }
+
+ #main{
+   
+    width: 100%;
+    height: auto;
+    background-color: var(--primaryColor--);
+    border-top: 2px solid var(--secendryColor--);
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    overflow-x: hidden;
+    
+ }
+ .Card{
+    
+    width: clamp(85% , 80% + 20vw, 100%);
+    position: relative;
+    border: 2px solid var(--secendryColor--);
+    display: flex;
+    justify-content:center;
+    align-items: flex-end;
+   
+ }
+ .Card_img{
+    width: 100%;
+    height: 100%;
+ }
+ .Card > .button{
+
+   position: absolute;
+   width:  clamp(3rem, 7rem + 1.3333vw , 11rem);;
+   height: clamp(6rem, .7rem + 1.3333vh , 11rem);
+   margin-left: -70%;
+   font-size:  clamp(2.7rem, .2rem + 1.3333vw , 4rem);
+   font-weight: bold;
+   display: grid;
+   place-items: center;
+   color:var(--btncolor--) !important;
+   background-color:var(--btnBackGroungColor);
+   border: 1px solid var(--secendryColor--);
+   cursor: pointer;
+ }
+ .Card > .Card_play_btn{
+        margin-left: 70%;
+ }
+  .Card > .Card_play_btn:hover,  .Card > .Card_Save_btn:hover{
+   outline: 2px solid var(--secendryColorHOVER--);
+   color: var(--btncolorHOVER--) !important;
+ }
+.Card_Title{
+
+   position: absolute;
+   width: fit-content;
+   height: fit-content;
+   font-size:  clamp(2.7rem, .2rem + 1.3333vw , 4rem);
+   font-weight: bold;
+   display: flex;
+   align-items: center;
+   background-color: rgba(10, 1, 1, .7);
+   color: var(--btncolor--);
+   margin-left: 0%;
+   margin-block: 45%;
+   display: none;
+}
+.Card:hover > .Card_Title{
+   display: flex;
+
+}
+ #Saves{
+   width: 100%;
+   height: auto;
+   background-color: var(--primaryColor--);
+   border-top: 2px solid var(--secendryColor--);
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   gap: 2rem;
+   display: none;
+ }
+ .H_Div{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: var(--HDIVBACKCOLOR--);
+   padding-inline: 15rem;
+ }
+ .H_Value{
+   display: inline-block;
+   font-size: clamp(.9rem, .4rem + 2.3333vw , 4rem);
+   font-weight: bold;
+   color: var(--btncolor--);
+ }
+ .H_Value:hover{
+   color: var(--btncolorHOVER--) !important;
+   text-decoration:none !important;
+   outline: 2px solid var(--secendryColorHOVER--);
+
+ }
+ .Delete_Btn{
+   font-size: clamp(.9rem, .4rem + 2.3333vw , 4rem);
+   font-weight: bolder;
+   border-color: var(--secendryColor--);
+   width: clamp(3rem, 7rem + 3vw , 10rem) ;
+   height: clamp(3rem, 1rem + 3vw , 7rem) ;
+   background-color: var(--btnBackGroungColor);
+   display: grid;
+   place-items: center;
+ }
+ .Delete_Btn:hover, .Delete_Btn:active{
+   background-color: var(--btnBackGroungColor);
+   outline: 2px solid var(--secendryColorHOVER--);
+   color: var(--btncolorHOVER--);
+ }
+
+
+
+
+ /* ========================LOEADER================= */
+ #LOEADER{
+   position: absolute;
+   width: 100vw;
+   height: 100vh;
+   background: var(--bodyBackColor--) url(https://i.gifer.com/1amw.gif) no-repeat center;
+   background-size: 20%;
+   position: fixed;
+   z-index: 100;
+   display: initial;
+ }
+
+ /*  ====== Scrool Barr==== */
+ /* width */
+::-webkit-scrollbar {
+   width: 1vw;
+ }
+ 
+ /* Track */
+ ::-webkit-scrollbar-track {
+   background: var(--primaryColor--); 
+ }
+  
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: var(--btncolor--); 
+ }
+ 
+ /* Handle on hover */
+ ::-webkit-scrollbar-thumb:hover {
+   background:var(--btncolor--); 
+ }
